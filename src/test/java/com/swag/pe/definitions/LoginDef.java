@@ -18,7 +18,7 @@ public class LoginDef {
     ValidationStep validate;
     @Given("el usuario navega al sitio web")
     public void userNavigateTo(){
-    url.navigateTo("https://www.saucedemo.com/v1/index.html");
+    url.navigateTo("https://www.saucedemo.com/");
     }
     @When("ingresa credenciales validas")
     public void userLoginWthValidCredentials(){
