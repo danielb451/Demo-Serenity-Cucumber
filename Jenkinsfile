@@ -24,11 +24,13 @@ pipeline {
             }
         }
 
+        
         stage('Build & Test') {
             steps {
-                bat 'mvn -B clean verify'
+                bat 'mvn -B clean verify -Dheadless.mode=true'
             }
         }
+
 
         stage('Report') {
             steps {
