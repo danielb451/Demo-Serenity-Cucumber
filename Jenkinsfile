@@ -2,17 +2,31 @@
 pipeline {
     agent any
 
+    options {
+        skipDefaultCheckout()
+    }
+
+    tools {
+        maven 'Maven3'
+    }
+
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'master',
-                    url: 'https://github.com/danielb451/Demo-Serenity-Cucumber.git'
+                checkout scm
+            }
+        }
+
+        stage('Verificar herramientas') {
+            steps {
+                bat 'java -version'
+                bat 'mvn -version'
             }
         }
 
         stage('Build & Test') {
             steps {
-                bat 'mvn clean verify'
+                bat 'mvn -B clean verify'
             }
         }
 
